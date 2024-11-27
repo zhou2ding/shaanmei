@@ -12,9 +12,11 @@
     "@vueform/multiselect": "^2.6.11",
     "echarts": "^5.5.1",
     "element-plus": "^2.8.8",
+    "immutable": "^5.0.3",
     "pinia": "^2.2.6",
     "vue": "^3.5.12",
-    "vue-router": "^4.5.0"
+    "vue-router": "^4.5.0",
+    "vueform": "^2.0.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.1.4",

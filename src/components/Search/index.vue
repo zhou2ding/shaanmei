@@ -97,7 +97,7 @@ img {
 .shipment-costs-search-container {
   position: absolute;
   left: 50px;
-  top: 50px;
+  top: 90px;
 }
 
 .shipment-costs-search-form-title {

@@ -3,7 +3,7 @@
     <Header>
       <h1>运价指数</h1>
     </Header>
-    <Search @onSearch="handleSearch" />
+    <Search @onSearch="handleSearch"/>
     <div class="chart-container">
       <div class="rect lt"></div>
       <div class="rect rt"></div>
@@ -21,18 +21,20 @@
       </el-button-group>
       <!-- 折线图部分 -->
       <div class="chart-data" v-if="chartVisible">
-        <line-chart :data="chartData" />
+        <line-chart :data="chartData"/>
       </div>
     </div>
+    <MapRoute @on-search="handleSearch2"/>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import {ref} from "vue";
 import Search from "@/components/Search/index.vue";
-import LineChart from "@/components/LineChart/index.vue"; // 折线图组件
-import { ElButtonGroup, ElButton } from "element-plus";
+import LineChart from "@/components/LineChart/index.vue";
+import {ElButtonGroup, ElButton} from "element-plus";
 import Header from '@/components/Header/Header.vue';
+import MapRoute from "@/components/RoutePrice/index.vue";
 
 const chartData = ref(null); // 当前折线图数据
 const chartOptions = ["综合", "矿区", "煤种"]; // 按钮选项
@@ -47,6 +49,12 @@ const handleSearch = (searchParams) => {
   chartData.value = generateMockData(); // 用模拟数据替代实际请求
 };
 
+const handleSearch2 = (searchParams) => {
+  console.log("查询参数2:", searchParams);
+
+  // todo 经纬度、距离
+};
+
 const changeChart = (option) => {
   currentChart.value = option;
 
@@ -57,7 +65,7 @@ const changeChart = (option) => {
 
 const generateMockData = (type = "综合") => {
   const now = new Date();
-  const timestamps = Array.from({ length: 60 }, (_, idx) => {
+  const timestamps = Array.from({length: 60}, (_, idx) => {
     const time = new Date(now - idx * 60000); // 每分钟往前推
     return `${time.getHours()}:${time.getMinutes().toString().padStart(2, "0")}`;
   }).reverse();
@@ -65,7 +73,7 @@ const generateMockData = (type = "综合") => {
   return {
     title: `${type}运价指数时序图`,
     timestamps, // 横轴时间数据
-    values: Array.from({ length: 60 }, () => Math.random() * 100), // 随机数据
+    values: Array.from({length: 60}, () => Math.random() * 100), // 随机数据
   };
 };
 </script>
@@ -87,28 +95,34 @@ const generateMockData = (type = "综合") => {
   border: 1px solid #0079fe;
   background-color: rgba(255, 255, 255, 0.05);
   width: 30%;
-  height: 56%;
-  position: relative;
+  height: 47vh;
+  position: absolute;
+  left: 60vh;
+
   .rect {
     width: 20px;
     height: 20px;
     position: absolute;
     border-top: 4px solid #5fbfff;
     border-left: 4px solid #5fbfff;
+
     &.lt {
       left: -2px;
       top: -2px;
     }
+
     &.rt {
       top: -2px;
       right: -2px;
       transform: rotate(90deg);
     }
+
     &.lb {
       bottom: -2px;
       left: -2px;
       transform: rotate(-90deg);
     }
+
     &.rb {
       bottom: -2px;
       right: -2px;
