@@ -24,7 +24,7 @@
         <line-chart :data="chartData"/>
       </div>
     </div>
-    <MapRoute @on-search="handleSearch2"/>
+    <MapRoute />
   </div>
 </template>
 
@@ -47,12 +47,6 @@ const handleSearch = (searchParams) => {
 
   // 根据查询条件请求数据，这里模拟一个数据结果
   chartData.value = generateMockData(); // 用模拟数据替代实际请求
-};
-
-const handleSearch2 = (searchParams) => {
-  console.log("查询参数2:", searchParams);
-
-  // todo 经纬度、距离
 };
 
 const changeChart = (option) => {
@@ -95,9 +89,9 @@ const generateMockData = (type = "综合") => {
   border: 1px solid #0079fe;
   background-color: rgba(255, 255, 255, 0.05);
   width: 30%;
-  height: 47vh;
+  height: auto;
   position: absolute;
-  left: 60vh;
+  left: 55vh;
 
   .rect {
     width: 20px;

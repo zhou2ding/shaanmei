@@ -102,7 +102,7 @@ img {
 
 .shipment-costs-search-form-title {
   color: #3ad9ff;
-  font-size: 28px;
+  font-size: 24px;
   margin-top: 20px;
 }
 
