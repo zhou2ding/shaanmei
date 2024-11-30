@@ -36,17 +36,17 @@ import {ElButtonGroup, ElButton} from "element-plus";
 import Header from '@/components/Header/Header.vue';
 import MapRoute from "@/components/RoutePrice/index.vue";
 
-const chartData = ref(null); // 当前折线图数据
-const chartOptions = ["综合", "矿区", "煤种"]; // 按钮选项
-const currentChart = ref("综合"); // 当前选择的折线图类型
-const chartVisible = ref(false); // 控制折线图是否显示
+const chartData = ref(null);
+const chartOptions = ["综合", "矿区", "煤种"];
+const currentChart = ref("综合");
+const chartVisible = ref(false);
 
 const handleSearch = (searchParams) => {
   console.log("查询参数:", searchParams);
   chartVisible.value = true;
 
   // 根据查询条件请求数据，这里模拟一个数据结果
-  chartData.value = generateMockData(); // 用模拟数据替代实际请求
+  chartData.value = generateMockData();
 };
 
 const changeChart = (option) => {
@@ -54,7 +54,7 @@ const changeChart = (option) => {
 
   // 根据选项更新数据逻辑
   console.log(`切换到 ${option} 折线图`);
-  chartData.value = generateMockData(option); // 替代为根据选项加载不同数据
+  chartData.value = generateMockData(option);
 };
 
 const generateMockData = (type = "综合") => {
@@ -67,7 +67,7 @@ const generateMockData = (type = "综合") => {
   return {
     title: `${type}运价指数时序图`,
     timestamps, // 横轴时间数据
-    values: Array.from({length: 60}, () => Math.random() * 100), // 随机数据
+    values: Array.from({length: 60}, () => Math.random() * 100),
   };
 };
 </script>
