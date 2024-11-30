@@ -59,8 +59,11 @@ const searchStart = () => {
     alert("请选择起点和终点");
     return;
   }
-  const startPoint = selectedMine.value.value;
+  const startPoint = selectedMine.value;
   const endPointName = searchUnloadPoint.value;
+
+  console.log("selectedMine",selectedMine)
+  console.log("startPoint",startPoint)
 
   // 使用百度地图API获取终点坐标
   const myGeo = new BMapGL.Geocoder();
